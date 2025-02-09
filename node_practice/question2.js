@@ -32,7 +32,7 @@ const server = http.createServer((request, response) => {
     } else {
         response.statusCode = 404
         response.end(`Page not found`)
-    }
+    }     
 
 })
 
@@ -41,3 +41,18 @@ const PORT = 8080
 server.listen(PORT, () => {
     console.log(`Server is running on the PORT ${PORT}`)
 })
+
+
+/*
+Challenge: Simple API with Query Parameters
+Modify your Node.js server to handle a new route:
+
+GET /greet?name=John
+
+If a name is provided in the query parameter, respond with
+Hello, John! Welcome to my Node.js server.
+
+If no name is provided, respond with:
+Hello, Guest! Welcome to my Node.js server.
+Keep your existing routes (/, /about, /contact, and 404 handling).
+*/

@@ -1,5 +1,5 @@
 // this module reposnsible for taking input from the console 
-const readline = require('readline');
+import readline from 'readline'
 
 // crating interface : sets readline interface to standard input and output
 const rl = readline.createInterface({
@@ -11,7 +11,7 @@ const rl = readline.createInterface({
 rl.question('Enter your name', (yourName) => {
     console.log('Reverse version of your name is', reverseString(yourName));
     rl.close();
-});
+}); 
 
 function reverseString(name) {
     let n = name.length;

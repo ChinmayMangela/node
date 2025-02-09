@@ -1,10 +1,12 @@
 import http from 'http'
+import url from 'url'
 
 const server = http.createServer((request, response) => {
     response.statusCode = 200
     response.setHeader("Content-Type", "text/plain")
 
     const currentPage = request.url
+
     if(currentPage === '/') {
         response.end('Hello, Welcome to my website')
     } else if(currentPage === '/projects') {
