@@ -82,6 +82,36 @@ async function updateContentOfFile(name, content) {
     }
 }
 
+async function removeFile(name) {
+    const isExists = await checkExistance(name)
+    if(isExists) {
+        const fullPath = path.join(process.cwd(), name)
+
+        try {
+            await fs.unlink(fullPath)
+        } catch(error) {
+            console.log(error)
+        }
+    } else {
+        console.log('File does not exists')
+    }
+}
+
+async function removeDirectory(name) {
+    const isExists = await checkExistance(name)
+    if(isExists) {
+        const fullPath = path.join(process.cwd(), name)
+
+        try {
+            await fs.rmdir(fullPath)
+        } catch(error) {
+            console.log(error)
+        }
+    } else {
+        console.log('Directory does not exists')
+    }
+}
+
 
 
 // createDirectory('Chinmay')
@@ -90,3 +120,7 @@ async function updateContentOfFile(name, content) {
 // addContentToFile('monty.txt', 'HII, CHINMAY HERE')
 // updateContentOfFile('chinmay.txt', '\nI LOVE PROGRAMMING')
 // updateContentOfFile('monty.txt', '\nI LOVE PROGRAMMING')
+// removeFile('test.txt')
+// removeFile('hello.txt')
+// removeDirectory('monty')
+removeDirectory('monty')
