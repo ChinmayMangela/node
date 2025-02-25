@@ -35,8 +35,58 @@ async function createDirectory(name) {
     }
 }
 
-createDirectory('Chinmay')
+async function createFile(name) {
+    // check whether file exists or not
+    let fileExists = await checkExistance(name)
+    // if not then create
+    if(!fileExists) {
+        const fullPath = path.join(process.cwd(), name)
+        try {
+            await fs.writeFile(fullPath, 'HELLO, CHINMAY HERE', 'utf-8')
+        } catch (error) {
+            console.log(error)
+        }
+    } else {
+        console.log(`${name} already exists`)
+    }
+}
+
+async function addContentToFile(name, content) {
+    let isExists = await checkExistance(name)
+
+    if(isExists) {
+        const fullPath = path.join(process.cwd(), name)
+        try {
+            await fs.writeFile(fullPath, content, 'utf8')
+        } catch(e) {
+            console.log(e)
+        }
+    } else {
+        console.log('File does not exists')
+    }
+}
+
+
+async function updateContentOfFile(name, content) {
+    let isExists = await checkExistance(name)
+
+    if(isExists) {
+        const fullPath = path.join(process.cwd(), name)
+        try {
+            await fs.appendFile(fullPath, content, 'utf8')
+        } catch(e) {
+            console.log(e)
+        }
+    } else {
+        console.log('File does not exists')
+    }
+}
 
 
 
-createFile('monty.txt')
+// createDirectory('Chinmay')
+// createFile('chinmay.txt')
+// addContentToFile('chinmay.txt', 'HII, CHINMAY HERE')
+// addContentToFile('monty.txt', 'HII, CHINMAY HERE')
+// updateContentOfFile('chinmay.txt', '\nI LOVE PROGRAMMING')
+// updateContentOfFile('monty.txt', '\nI LOVE PROGRAMMING')
